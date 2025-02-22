@@ -23,6 +23,7 @@ resource "aws_security_group" "sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
 resource "aws_instance" "instance" {
   ami           = data.aws_ami.ami.id
   instance_type = var.instance_type
@@ -46,4 +47,12 @@ resource "null_resource" "ansible-pull" {
       "ansible-pull -i localhost, -u https://github.com/goutham817/roboshop-ansible roboshop.yml -e env=${var.env} -e app_name=${var.component_name}"
     ]
   }
+}
+
+resource "aws_route53_record" "record" {
+  zone_id = var.zone_id
+  name    = "${var.component_name}-${var.env}.${var.domain_name}"
+  type    = "A"
+  ttl     = "30"
+  records = [aws_instance.instance.private_ip]
 }
