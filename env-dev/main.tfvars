@@ -1,6 +1,7 @@
 env="dev"
 domain_name = "devopsb78.online"
 zone_id = "Z0831747KRD8G7UKNE8H"
+
 db_instances = {
 
   mongodb = {
