@@ -33,21 +33,7 @@ resource "aws_instance" "instance" {
   }
 }
 
-/*resource "null_resource" "ansible-pull" {
-  provisioner "remote-exec" {
-    connection {
-      type     = "ssh"
-      user     = "ec2-user"
-      password = "DevOps321"
-      host     = aws_instance.instance.private_ip
-    }
 
-    inline = [
-      "sudo labauto ansible",
-      "ansible-pull -i localhost, -U https://github.com/goutham817/roboshop-ansible roboshop.yml -e env=${var.env} -e app_name=${var.component_name}"
-    ]
-  }
-}*/
 
 resource "aws_route53_record" "record" {
   zone_id = var.zone_id
