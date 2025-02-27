@@ -1,6 +1,6 @@
 env="dev"
-domain_name = "devopsb83.online"
-zone_id = "Z0831747KRD8G7UKNE8H"
+domain_name = "devopsb81.online"
+zone_id = "Z058870397G0UK1F2N2T"
 
 db_instances = {
 
